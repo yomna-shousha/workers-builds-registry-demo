@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+
+# SBOM is generated during CI and pushed back -- don't commit locally
+# (Workers Builds will commit it via scripts/push-sbom.sh)
+# Uncomment the line below if you want to gitignore it locally:
+# sbom.json

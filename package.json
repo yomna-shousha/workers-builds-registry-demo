@@ -1,0 +1,22 @@
+{
+  "name": "workers-builds-registry-demo",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "wrangler deploy",
+    "generate-sbom": "npx @cyclonedx/cyclonedx-npm --output-file sbom.json",
+    "ci:build": "npm run build && npm run generate-sbom"
+  },
+  "dependencies": {
+    "astro": "^5.7.10",
+    "@astrojs/cloudflare": "^12.3.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.14.0",
+    "@cyclonedx/cyclonedx-npm": "^1.19.0"
+  }
+}

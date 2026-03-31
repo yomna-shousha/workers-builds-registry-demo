@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Workers Builds Registry Demo">
+  <span class="badge">Workers Builds</span>
+  <h1>Registry Demo</h1>
+  <p>
+    This site was built and deployed by
+    <strong>Cloudflare Workers Builds</strong> with dependencies installed from a
+    custom npm registry.
+  </p>
+  <p>
+    The build pipeline authenticates to the registry using an
+    <code>NPM_TOKEN</code> build secret and a committed <code>.npmrc</code> file.
+  </p>
+  <p>
+    After building, an SBOM is generated with
+    <code>@cyclonedx/cyclonedx-npm</code> and pushed back to the repository so
+    the security team can scan the exact artifact that was deployed.
+  </p>
+
+  <h2 style="margin-top: 2rem; font-size: 1.25rem; color: #e5e5e5;">How it works</h2>
+  <ol style="margin-top: 0.75rem; padding-left: 1.25rem; color: #a3a3a3; line-height: 2;">
+    <li><code>npm install</code> resolves deps from the custom registry via <code>.npmrc</code></li>
+    <li><code>npm run build</code> compiles the Astro site</li>
+    <li><code>npm run generate-sbom</code> creates <code>sbom.json</code></li>
+    <li>The SBOM is pushed back to GitHub for security scanning</li>
+    <li><code>npx wrangler deploy</code> ships it to Workers</li>
+  </ol>
+</Layout>
